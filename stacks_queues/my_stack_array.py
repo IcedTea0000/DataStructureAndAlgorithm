@@ -19,7 +19,7 @@ class MyStackArray:
     def push(self, value):
         """
         add data to the top of stack
-        :param data:
+        :param value:
         :return:
         """
         self.data.append(value)
