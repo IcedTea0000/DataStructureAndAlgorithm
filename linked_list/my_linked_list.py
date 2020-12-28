@@ -49,6 +49,7 @@ class MyLinkedList():
             previous_node = my_linked_list.get_node(index - 1)
             new_node.set_next_node(new_next_node=previous_node.get_next())
             previous_node.set_next_node(new_node)
+            self.size += 1
 
     def get_node(self, index):
         counter = 0
@@ -61,13 +62,21 @@ class MyLinkedList():
         return current_node
 
     def remove(self, index):
-        if index <=0:
-            pass
+        if index <= 0:
+            new_node = self.head.get_next()
+            self.head = Node(data=new_node.get_data(), next_node=new_node.get_next())
+            del new_node
         elif index >= self.size:
-            pass
+            previous_node = self.get_node(self.size - 2)
+            previous_node.set_next_node(None)
         else:
-            pass
+            previous_node = self.get_node(index - 1)
+            node_to_delete = previous_node.get_next()
+            previous_node.set_next_node(node_to_delete.get_next())
+        self.size -= 1
+
         pass
+
 
 if __name__ == '__main__':
     my_linked_list = MyLinkedList(10)
@@ -77,4 +86,6 @@ if __name__ == '__main__':
     my_linked_list.insert(index=1, data=6)
     my_linked_list.insert(index=0, data=4)
     print(my_linked_list)
-
+    print('\n')
+    my_linked_list.remove(9)
+    print(my_linked_list)
