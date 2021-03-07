@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import math
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def areas(r, a):
+    """
+    :param r: (float) The radius of the circle.
+    :param a: (float) The angle of the segment.
+    :returns: (list) (A list of two elements containing the area inside, and area outside the circle, in that order.)
+    """
+    circle_area = math.pi * r **2
+    segment_area = (r**2)/2*(a * math.pi/180 - math.sin(a*math.pi/180))
+    result = [circle_area, segment_area]
+    return result
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(areas(10, 90))
